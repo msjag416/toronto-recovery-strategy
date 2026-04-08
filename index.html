@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toronto Professional's Guide: Burnout Recovery and Nursing Expertise</title>
     <meta name="description" content="Get expert advice on surviving the Toronto workplace from a Registered Nurse. Discover the 8-step burnout framework and the best local post-shift dining spots.">
-    <meta name="keywords" content="Toronto professional recovery strategy, Registered Nurse burnout framework, Financial District workplace wellness, Toronto nursing career advocacy, post-shift sensory recovery, best restaurants for Toronto healthcare workers, thriving in a messy workplace Toronto, Burnout to Balance 8-step guide for professionals, Toronto healthcare professional recovery strategy, University Rosedale professional wellness resources">
+    <meta name="keywords" content="Toronto professional recovery strategy, Registered Nurse burnout framework, Financial District workplace wellness, Toronto nursing career advocacy, post-shift sensory recovery, best restaurants for Toronto healthcare workers, thriving in a messy workplace Toronto, Burnout to Balance 8-step guide for professionals, Toronto healthcare professional recovery strategy, University Rosedale professional wellness resources, Downtown Toronto burnout recovery, Liberty Village wellness">
     <meta name="author" content="JoAnne Andrea Gomez, RN">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.torontoprorn.com/recovery-strategy">
@@ -155,6 +155,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         :root {
@@ -670,6 +673,113 @@
 
         .footer-links a:hover { color: var(--color-accent-light); }
 
+        /* ===== CONTACT FORM ===== */
+        .contact-section {
+            padding: 4rem 1.5rem;
+            background: var(--color-highlight);
+            margin-top: 3rem;
+        }
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .contact-header .label {
+            color: var(--color-accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .contact-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .contact-header p {
+            color: var(--color-body);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--color-border);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+        .form-label span {
+            color: #D32F2F;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-charcoal);
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .char-counter {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--color-muted);
+            margin-top: 0.4rem;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--color-charcoal);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .form-submit:hover {
+            background: #1a1a1a;
+            transform: translateY(-1px);
+        }
+
         /* ===== ANIMATIONS ===== */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(18px); }
@@ -703,7 +813,7 @@
         <div class="hero-inner">
             <span class="hero-badge">Toronto &middot; Healthcare &middot; Recovery</span>
             <h1>Navigating the Messy Workplace: <span>A Toronto Professional's Strategy</span></h1>
-            <p class="hero-subtitle">A Registered Nurse's burnout framework for thriving in Toronto. Built on 27 years of ICU experience and designed for professionals in the Financial District, University&mdash;Rosedale, and Scarborough Southwest.</p>
+            <p class="hero-subtitle">A Registered Nurse's burnout framework for thriving in Toronto. Built on 27 years of ICU experience and designed for professionals in Downtown Toronto, the Financial District, Liberty Village, and Scarborough Southwest.</p>
         </div>
     </header>
 
@@ -760,7 +870,7 @@
             <p>A Registered Nurse burnout framework helps Toronto professionals by applying clinical-grade recovery protocols to workplace fatigue. The Burnout to Balance 8-step method, developed from 27 years of Trauma-Neuro ICU experience, provides evidence-based protocols for managing energy between shifts. Post-shift sensory recovery through local dining and intentional disconnection from clinical environments are core to the approach.</p>
         </div>
 
-        <p>Toronto is facing a period of intense transition that hits every professional in the downtown core. The political climate is tense, the Toronto District School Board is managing significant staff reductions, and healthcare workers are navigating a system that feels increasingly unstable. These systemic issues create a level of background stress that standard productivity apps and calorie trackers can't fix. This environment is exactly what happens when a workplace or a city becomes too messy to manage through traditional means. Professionals in the Financial District, nurses at UHN, and workers across Scarborough Southwest are all feeling the same weight.</p>
+        <p>Toronto is facing a period of intense transition that hits every professional in the downtown core. The political climate is tense, the Toronto District School Board is managing significant staff reductions, and healthcare workers are navigating a system that feels increasingly unstable. These systemic issues create a level of background stress that standard productivity apps and calorie trackers can't fix. This environment is exactly what happens when a workplace or a city becomes too messy to manage through traditional means. Professionals in the Financial District, creatives in Liberty Village, nurses at UHN, and workers across Scarborough Southwest are all feeling the same weight.</p>
 
         <p>Too many people in Toronto are tired of the "optimization" culture that demands they track every minute of sleep or every gram of protein. This constant monitoring leads to more anxiety rather than providing a solution to the fatigue that hits after a long shift. Because I've spent years as a Trauma-Neuro ICU nurse and now work in a busy cosmetic surgery clinic, I understand the physiological toll this environment takes on the body. Real recovery isn't about doing more. It's about finding a functional balance between professional demands and personal well-being. You can find specific resources for navigating these clinical and professional hurdles at <a href="https://www.torontoprorn.com/" target="_blank" rel="noopener">Toronto Pro RN</a> and <a href="https://prorninc.com/" target="_blank" rel="noopener">ProRN Inc.</a>, where I cover the realities of the Ontario healthcare landscape.</p>
 
@@ -838,12 +948,14 @@
             <p>Toronto nursing career advocacy supports Financial District workplace wellness by bringing clinical-grade recovery strategies into corporate environments. <a href="https://prorninc.com/" target="_blank" rel="noopener">ProRN Inc.</a>, a Toronto-based healthcare consulting firm founded by a Registered Nurse, provides resources that apply evidence-based protocols to burnout prevention. The approach combines the Burnout to Balance framework with local sensory experiences including quality dining and intentional disconnection.</p>
         </div>
 
-        <p>The key to succeeding in Toronto in 2026 is recognizing that you're part of a larger community of professionals who are all searching for a better way to work and live. Whether you're an RN looking for better protocols, a tech worker in the Financial District trying to avoid total exhaustion, or a public servant in University&mdash;Rosedale managing institutional chaos, the answers are found in evidence-based strategies and local connection. You don't have to choose between a successful career and your health. You just need a better map for the journey. By integrating professional advocacy with intentional living and high-quality local experiences, you can find a rhythm that works for you regardless of which Toronto neighbourhood you're based in.</p>
+        <p>The key to succeeding in Toronto in 2026 is recognizing that you're part of a larger community of professionals who are all searching for a better way to work and live. Whether you're an RN looking for better protocols, a tech worker in the Financial District trying to avoid total exhaustion, or a public servant in University-Rosedale managing institutional chaos, the answers are found in evidence-based strategies and local connection. You don't have to choose between a successful career and your health. You just need a better map for the journey. By integrating professional advocacy with intentional living and high-quality local experiences, you can find a rhythm that works for you regardless of which Toronto neighbourhood you're based in.</p>
 
         <!-- Geo Tags -->
         <div class="geo-tags">
+            <span>Downtown Toronto</span>
             <span>Financial District</span>
-            <span>University&mdash;Rosedale</span>
+            <span>Liberty Village</span>
+            <span>University-Rosedale</span>
             <span>Scarborough Southwest</span>
             <span>King West</span>
             <span>Queen West</span>
@@ -854,7 +966,7 @@
 
         <!-- Hub: Spoke Cards -->
         <section class="spoke-section" id="hub">
-            <div class="spoke-label">Your Recovery Hub &mdash; Explore the Network</div>
+            <div class="spoke-label">Your Recovery Hub : Explore the Network</div>
 
             <div class="spoke-grid">
                 <a href="https://prorninc.com/" class="spoke-card" target="_blank" rel="noopener">
@@ -886,7 +998,64 @@
 
         <p>I also write regularly on <a href="https://medium.com/@msjag416" target="_blank" rel="noopener">Medium</a> about the intersection of healthcare, professional well-being, and the realities of working in high-stress environments. If you're looking for longer reads on burnout prevention, workplace psychology, and health topics backed by clinical experience, that's where to find them.</p>
 
+        <!-- Latest from Medium -->
+        <section style="margin-top: 2.5rem;">
+            <div class="spoke-label">From my Medium Blog</div>
+            <div id="articles-container" class="spoke-grid">
+                <p>Loading the latest articles...</p>
+            </div>
+        </section>
+
     </main>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact-section" id="contact">
+        <div class="contact-header">
+            <span class="label">Get in Touch</span>
+            <h2>Contact ProRN Inc.</h2>
+            <p>Have questions about the proposals, the data, or how these frameworks could work for your organization? Reach out directly.</p>
+        </div>
+        
+        <div class="contact-form-container">
+            <!-- Form action is set via JavaScript to prevent email scraping -->
+            <form id="prorn-contact-form" method="POST">
+                <!-- Anti-spam hidden field -->
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_subject" value="New Inquiry from ProRN Website">
+                
+                <div class="form-group">
+                    <label for="contact-name" class="form-label">First and Last Name <span>*</span></label>
+                    <input type="text" id="contact-name" name="name" class="form-control" placeholder="e.g. Jane Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-email" class="form-label">Email <span>*</span></label>
+                    <input type="email" id="contact-email" name="email" class="form-control" placeholder="email@organization.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-reason" class="form-label">Reason for Contacting <span>*</span></label>
+                    <select id="contact-reason" name="reason" class="form-control" required>
+                        <option value="" disabled selected>Select a reason...</option>
+                        <option value="Consulting Inquiry">Consulting Inquiry</option>
+                        <option value="Book Inquiry">Book Inquiry</option>
+                        <option value="Speaking Engagement">Speaking Engagement</option>
+                        <option value="General Question">General Question</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-message" class="form-label">Message <span>*</span></label>
+                    <textarea id="contact-message" name="message" class="form-control" placeholder="Brief description of your inquiry..." maxlength="170" required></textarea>
+                    <div class="char-counter" id="char-count">0 / 170</div>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    Send Message <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                </button>
+            </form>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer" role="contentinfo">
@@ -905,5 +1074,80 @@
         </div>
     </footer>
 
+    <script>
+    function stripHtml(html) {
+        let tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || "";
+    }
+    function findImageInContent(content) {
+        const div = document.createElement('div');
+        div.innerHTML = content;
+        const img = div.querySelector('img');
+        return img ? img.src : null;
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@msjag416')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                if (data.status === 'ok' && data.items && data.items.length > 0) {
+                    const container = document.getElementById('articles-container');
+                    container.innerHTML = ''; 
+                    
+                    data.items.slice(0, 2).forEach(item => {
+                        let image = item.thumbnail || findImageInContent(item.description || item.content);
+                        let cleanDesc = stripHtml(item.description).substring(0, 120) + "...";
+                        
+                        let pubDateStr = item.pubDate ? item.pubDate.replace(' ', 'T') : '';
+                        let pubDate = new Date(pubDateStr);
+                        let formattedDate = isNaN(pubDate) ? '' : pubDate.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+                            
+                        const articleHTML = `
+                            <div class="spoke-card">
+                                <div style="height: 180px; width: 100%; background: var(--color-border); border-radius: 4px; overflow: hidden; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
+                                    ${image 
+                                         ? `<img src="${image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;" />`
+                                        : `<i data-lucide="pen-tool" style="color: var(--color-muted); opacity: 0.5;"></i>`
+                                    }
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <div class="card-icon" style="margin-bottom: 0;">Medium Article</div>
+                                    <div style="font-size: 0.75rem; color: var(--color-muted); font-weight: 500;">${formattedDate}</div>
+                                </div>
+                                <div class="card-title">${item.title}</div>
+                                <p class="card-desc">${cleanDesc}</p>
+                                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="card-arrow">Read Full Article &rarr;</a>
+                            </div>
+                        `;
+                        container.insertAdjacentHTML('beforeend', articleHTML);
+                    });
+                    lucide.createIcons(); 
+                }
+            })
+            .catch(() => {
+                document.getElementById('articles-container').innerHTML = '<p>Visit my Medium profile for the latest articles.</p>';
+            });
+
+        // Form Character Counter
+        const messageTextarea = document.getElementById('contact-message');
+        const charCountDisplay = document.getElementById('char-count');
+        if (messageTextarea && charCountDisplay) {
+            messageTextarea.addEventListener('input', function() {
+                const currentLength = this.value.length;
+                charCountDisplay.textContent = `${currentLength} / 170`;
+            });
+        }
+
+        // Obfuscate Email for Form Action
+        const contactForm = document.getElementById('prorn-contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const user = 'prorninc';
+                const domain = 'gmail.com';
+                this.action = `https://formsubmit.co/${user}@${domain}`;
+            });
+        }
+    });
+    </script>
 </body>
 </html>
