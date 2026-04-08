@@ -1017,11 +1017,11 @@
         </div>
         
         <div class="contact-form-container">
-            <!-- Form action is set via JavaScript to prevent email scraping -->
-            <form id="prorn-contact-form" method="POST">
-                <!-- Anti-spam hidden field -->
-                <input type="text" name="_honey" style="display:none">
-                <input type="hidden" name="_subject" value="New Inquiry from ProRN Website">
+            <form id="prorn-contact-form">
+                <input type="hidden" name="access_key" value="d53865a9-a2b3-4a65-944e-42902839d672" />
+                <input type="hidden" name="subject" value="New Toronto ProRN Inquiry" />
+                <input type="hidden" name="from_name" value="Toronto ProRN Website" />
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 
                 <div class="form-group">
                     <label for="contact-name" class="form-label">First and Last Name <span>*</span></label>
@@ -1053,6 +1053,7 @@
                 <button type="submit" class="form-submit">
                     Send Message <i data-lucide="send" style="width: 16px; height: 16px;"></i>
                 </button>
+                <div id="form-result" style="display: none; text-align: center; margin-top: 1rem; font-size: 0.95rem; font-weight: 600;"></div>
             </form>
         </div>
     </section>
@@ -1138,13 +1139,56 @@
             });
         }
 
-        // Obfuscate Email for Form Action
+        // Web3Forms AJAX Submission
         const contactForm = document.getElementById('prorn-contact-form');
+        const formResult = document.getElementById('form-result');
+        const submitButton = contactForm ? contactForm.querySelector('.form-submit') : null;
+
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                const user = 'prorninc';
-                const domain = 'gmail.com';
-                this.action = `https://formsubmit.co/${user}@${domain}`;
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+
+                submitButton.innerHTML = 'Sending...';
+                formResult.style.display = 'none';
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        formResult.style.display = 'block';
+                        formResult.style.color = 'var(--color-sage)';
+                        formResult.textContent = "Message sent successfully. I will be in touch soon.";
+                        contactForm.reset();
+                        if(charCountDisplay) charCountDisplay.textContent = '0 / 170';
+                    } else {
+                        formResult.style.display = 'block';
+                        formResult.style.color = '#D32F2F';
+                        formResult.textContent = jsonResponse.message || "Something went wrong. Please try again.";
+                    }
+                })
+                .catch(error => {
+                    formResult.style.display = 'block';
+                    formResult.style.color = '#D32F2F';
+                    formResult.textContent = "Something went wrong. Please check your connection.";
+                })
+                .then(function() {
+                    submitButton.innerHTML = 'Send Message <i data-lucide="send" style="width: 16px; height: 16px;"></i>';
+                    lucide.createIcons();
+                    setTimeout(() => {
+                        formResult.style.display = 'none';
+                    }, 5000);
+                });
             });
         }
     });
