@@ -1009,127 +1009,284 @@
 
         <!-- Toronto Skyline Silhouette -->
         <div class="hero-skyline">
-            <svg viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <svg viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <defs>
-                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="rgba(255,255,255,0.08)"/>
-                        <stop offset="100%" stop-color="rgba(247,243,238,1)"/>
+                    <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                        <stop offset="50%" stop-color="rgba(247,243,238,0.3)"/>
+                        <stop offset="100%" stop-color="#F7F3EE"/>
                     </linearGradient>
-                    <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="rgba(255,255,255,0.12)"/>
+                    <linearGradient id="bldgFar" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/>
+                        <stop offset="100%" stop-color="rgba(247,243,238,0.5)"/>
+                    </linearGradient>
+                    <linearGradient id="bldgMid" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.10)"/>
+                        <stop offset="100%" stop-color="rgba(247,243,238,0.7)"/>
+                    </linearGradient>
+                    <linearGradient id="bldgFront" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+                        <stop offset="100%" stop-color="rgba(247,243,238,0.9)"/>
+                    </linearGradient>
+                    <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
                         <stop offset="100%" stop-color="rgba(247,243,238,0.95)"/>
+                    </linearGradient>
+                    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(184,105,78,0.05)"/>
+                        <stop offset="100%" stop-color="#F7F3EE"/>
                     </linearGradient>
                 </defs>
 
-                <!-- Background city glow -->
-                <rect x="0" y="140" width="1440" height="80" fill="url(#skyGrad)"/>
+                <!-- Sky-to-page fade -->
+                <rect x="0" y="0" width="1440" height="300" fill="url(#skyFade)"/>
 
-                <!-- Far background buildings (lighter, shorter) -->
-                <g fill="url(#buildingGrad)" opacity="0.5">
-                    <rect x="50" y="145" width="30" height="75"/>
-                    <rect x="90" y="155" width="25" height="65"/>
-                    <rect x="200" y="140" width="35" height="80"/>
-                    <rect x="280" y="150" width="20" height="70"/>
-                    <rect x="350" y="148" width="28" height="72"/>
-                    <rect x="1050" y="142" width="32" height="78"/>
-                    <rect x="1120" y="155" width="22" height="65"/>
-                    <rect x="1200" y="148" width="30" height="72"/>
-                    <rect x="1300" y="152" width="26" height="68"/>
-                    <rect x="1380" y="158" width="35" height="62"/>
+                <!-- ============================================ -->
+                <!-- FAR BACKGROUND (faint, short, fills edges)   -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgFar)" opacity="0.35">
+                    <rect x="15" y="215" width="22" height="85"/>
+                    <rect x="45" y="222" width="18" height="78"/>
+                    <rect x="75" y="210" width="24" height="90"/>
+                    <rect x="200" y="218" width="20" height="82"/>
+                    <rect x="230" y="225" width="18" height="75"/>
+                    <rect x="1200" y="215" width="22" height="85"/>
+                    <rect x="1235" y="220" width="18" height="80"/>
+                    <rect x="1270" y="212" width="24" height="88"/>
+                    <rect x="1310" y="225" width="20" height="75"/>
+                    <rect x="1350" y="218" width="26" height="82"/>
+                    <rect x="1395" y="228" width="22" height="72"/>
                 </g>
 
-                <!-- Mid buildings -->
-                <g fill="url(#buildingGrad)" opacity="0.7">
-                    <rect x="130" y="128" width="40" height="92"/>
-                    <rect x="180" y="135" width="30" height="85"/>
-                    <rect x="250" y="118" width="38" height="102"/>
-                    <rect x="320" y="130" width="25" height="90"/>
-                    <rect x="400" y="122" width="35" height="98"/>
-                    <rect x="450" y="132" width="28" height="88"/>
-
-                    <!-- Right side mid -->
-                    <rect x="900" y="125" width="35" height="95"/>
-                    <rect x="950" y="118" width="40" height="102"/>
-                    <rect x="1010" y="130" width="30" height="90"/>
-                    <rect x="1080" y="122" width="36" height="98"/>
-                    <rect x="1150" y="135" width="28" height="85"/>
-                    <rect x="1250" y="128" width="35" height="92"/>
+                <!-- ============================================ -->
+                <!-- ROGERS CENTRE (SkyDome) - LEFT of CN Tower   -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgMid)" opacity="0.75">
+                    <!-- Dome arch -->
+                    <path d="M260,268 Q260,225 305,210 Q350,198 395,210 Q440,225 440,268 Z"/>
+                    <!-- Base structure -->
+                    <rect x="255" y="265" width="190" height="35"/>
+                    <!-- Roof panel curves -->
+                    <path d="M275,268 Q320,218 365,268" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+                    <path d="M310,268 Q350,225 390,268" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+                    <!-- Small left buildings near dome -->
+                    <rect x="160" y="230" width="28" height="70"/>
+                    <rect x="195" y="240" width="22" height="60"/>
+                    <rect x="225" y="235" width="26" height="65"/>
                 </g>
 
-                <!-- Foreground tall buildings (main skyline) -->
-                <g fill="url(#buildingGrad)" opacity="0.85">
-                    <!-- Left cluster -->
-                    <rect x="160" y="100" width="45" height="120"/>
-                    <rect x="215" y="90" width="35" height="130"/>
-                    <rect x="260" y="95" width="40" height="125"/>
-                    <rect x="310" y="105" width="30" height="115"/>
-                    <rect x="360" y="88" width="38" height="132"/>
-                    <rect x="410" y="98" width="32" height="122"/>
-                    <rect x="455" y="108" width="28" height="112"/>
-
-                    <!-- Right cluster -->
-                    <rect x="920" y="95" width="42" height="125"/>
-                    <rect x="975" y="85" width="36" height="135"/>
-                    <rect x="1020" y="92" width="40" height="128"/>
-                    <rect x="1070" y="100" width="32" height="120"/>
-                    <rect x="1115" y="88" width="38" height="132"/>
-                    <rect x="1165" y="96" width="30" height="124"/>
-                    <rect x="1210" y="105" width="35" height="115"/>
+                <!-- ============================================ -->
+                <!-- BUILDINGS BETWEEN DOME AND CN TOWER          -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgFront)" opacity="0.75">
+                    <rect x="380" y="178" width="30" height="122"/>
+                    <rect x="415" y="185" width="26" height="115"/>
+                    <rect x="448" y="170" width="32" height="130"/>
+                    <polygon points="448,170 464,160 480,170"/>
+                    <rect x="486" y="180" width="24" height="120"/>
+                    <rect x="515" y="168" width="28" height="132"/>
+                    <rect x="548" y="175" width="22" height="125"/>
                 </g>
 
-                <!-- CN Tower (center-left) -->
-                <g fill="url(#buildingGrad)" opacity="0.95">
-                    <!-- Main shaft -->
-                    <rect x="616" y="12" width="8" height="208"/>
-                    <!-- Antenna spire -->
-                    <rect x="618" y="0" width="4" height="18"/>
-                    <!-- Main pod (observation deck) -->
-                    <ellipse cx="620" cy="95" rx="28" ry="12"/>
-                    <rect x="596" y="88" width="48" height="16" rx="3"/>
-                    <!-- SkyPod -->
-                    <ellipse cx="620" cy="72" rx="14" ry="6"/>
-                    <!-- Lower taper -->
-                    <polygon points="608,110 612,200 628,200 632,110"/>
+                <!-- ============================================ -->
+                <!-- CN TOWER - THE MAIN EVENT                    -->
+                <!-- Positioned ~40% from left, dominates height  -->
+                <!-- ============================================ -->
+                <g fill="url(#towerGrad)">
+
+                    <!-- === SPIRE (sharp point tapering down) === -->
+                    <!-- Tip: razor-thin point -->
+                    <polygon points="599,0 600,0 600.5,30 598.5,30"/>
+                    <!-- Upper spire widening -->
+                    <polygon points="598.5,30 601.5,30 603,65 597,65"/>
+                    <!-- Spire midsection -->
+                    <polygon points="597,65 603,65 604,90 596,90"/>
+
+                    <!-- === SKYPOD (small bulge) === -->
+                    <ellipse cx="600" cy="95" rx="10" ry="4.5"/>
+                    <rect x="592" y="92" width="16" height="7" rx="2"/>
+
+                    <!-- === SHAFT between pods === -->
+                    <rect x="596" y="99" width="8" height="28"/>
+
+                    <!-- === MAIN POD (observation/restaurant) === -->
+                    <ellipse cx="600" cy="130" rx="24" ry="7"/>
+                    <rect x="579" y="125" width="42" height="12" rx="3"/>
+                    <ellipse cx="600" cy="137" rx="20" ry="5"/>
+                    <!-- Pod underside -->
+                    <rect x="582" y="137" width="36" height="6" rx="2"/>
+
+                    <!-- === NARROW SHAFT below pod === -->
+                    <rect x="595" y="143" width="10" height="18"/>
+
+                    <!-- === FLARED BASE (the signature shape) === -->
+                    <!-- Concave curves flaring outward dramatically -->
+                    <path d="M595,161 C593,190 580,240 565,300 L635,300 C620,240 607,190 605,161 Z"/>
+
+                    <!-- Inner structure lines on the flared base -->
+                    <path d="M598,165 C596,195 588,248 578,300" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                    <path d="M602,165 C604,195 612,248 622,300" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
                 </g>
 
-                <!-- Rogers Centre (SkyDome) near CN Tower -->
-                <g fill="url(#buildingGrad)" opacity="0.8">
-                    <ellipse cx="680" cy="188" rx="50" ry="18"/>
-                    <rect x="632" y="172" width="96" height="18" rx="8"/>
-                    <path d="M640,172 Q680,145 720,172" fill="url(#buildingGrad)"/>
+                <!-- CN Tower pod warm accent lights -->
+                <g fill="rgba(212,149,111,0.2)">
+                    <circle cx="584" cy="130" r="1.5"/>
+                    <circle cx="590" cy="132" r="1.5"/>
+                    <circle cx="610" cy="132" r="1.5"/>
+                    <circle cx="616" cy="130" r="1.5"/>
                 </g>
 
-                <!-- Additional towers near CN Tower cluster -->
-                <g fill="url(#buildingGrad)" opacity="0.85">
-                    <rect x="530" y="80" width="30" height="140"/>
-                    <rect x="570" y="92" width="25" height="128"/>
-                    <rect x="750" y="88" width="32" height="132"/>
-                    <rect x="790" y="95" width="28" height="125"/>
-                    <rect x="830" y="102" width="35" height="118"/>
-                    <rect x="500" y="100" width="22" height="120"/>
-                    <rect x="870" y="108" width="26" height="112"/>
+                <!-- ============================================ -->
+                <!-- BUILDINGS BEHIND CN TOWER (both sides)       -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgFront)" opacity="0.7">
+                    <!-- Left of tower base -->
+                    <rect x="530" y="168" width="30" height="132"/>
+                    <rect x="565" y="178" width="22" height="122"/>
+
+                    <!-- Right of tower base -->
+                    <rect x="625" y="172" width="26" height="128"/>
+                    <rect x="656" y="165" width="28" height="135"/>
+                    <rect x="690" y="175" width="24" height="125"/>
                 </g>
 
-                <!-- Ground plane fade -->
-                <rect x="0" y="200" width="1440" height="20" fill="#F7F3EE"/>
+                <!-- ============================================ -->
+                <!-- FINANCIAL DISTRICT (right of CN Tower)       -->
+                <!-- Main tower cluster                           -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgFront)" opacity="0.82">
 
-                <!-- Tiny window lights on foreground buildings -->
-                <g fill="rgba(255,255,255,0.15)">
-                    <rect x="170" y="110" width="3" height="3"/><rect x="180" y="110" width="3" height="3"/>
-                    <rect x="170" y="120" width="3" height="3"/><rect x="180" y="120" width="3" height="3"/>
-                    <rect x="170" y="130" width="3" height="3"/><rect x="180" y="130" width="3" height="3"/>
-                    <rect x="225" y="100" width="3" height="3"/><rect x="233" y="100" width="3" height="3"/>
-                    <rect x="225" y="110" width="3" height="3"/><rect x="233" y="110" width="3" height="3"/>
-                    <rect x="225" y="120" width="3" height="3"/><rect x="233" y="120" width="3" height="3"/>
-                    <rect x="370" y="95" width="3" height="3"/><rect x="378" y="95" width="3" height="3"/>
-                    <rect x="370" y="105" width="3" height="3"/><rect x="378" y="105" width="3" height="3"/>
-                    <rect x="540" y="90" width="3" height="3"/><rect x="548" y="90" width="3" height="3"/>
-                    <rect x="540" y="100" width="3" height="3"/><rect x="548" y="100" width="3" height="3"/>
-                    <rect x="985" y="95" width="3" height="3"/><rect x="993" y="95" width="3" height="3"/>
-                    <rect x="985" y="105" width="3" height="3"/><rect x="993" y="105" width="3" height="3"/>
-                    <rect x="1125" y="95" width="3" height="3"/><rect x="1133" y="95" width="3" height="3"/>
-                    <rect x="1125" y="105" width="3" height="3"/><rect x="1133" y="105" width="3" height="3"/>
+                    <!-- First Canadian Place (tallest office tower, flat top + antenna) -->
+                    <rect x="730" y="118" width="36" height="182"/>
+                    <rect x="745" y="108" width="6" height="14"/>
+                    <rect x="747" y="100" width="2" height="10"/>
+                    <!-- Vertical window lines -->
+                    <line x1="740" y1="118" x2="740" y2="300" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+                    <line x1="750" y1="118" x2="750" y2="300" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+                    <line x1="758" y1="118" x2="758" y2="300" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+                    <!-- TD Centre towers (flat-top modernist pair) -->
+                    <rect x="774" y="148" width="32" height="152"/>
+                    <rect x="812" y="158" width="28" height="142"/>
+
+                    <!-- Scotia Plaza (pointed/angular crown) -->
+                    <rect x="848" y="128" width="34" height="172"/>
+                    <polygon points="848,128 865,108 882,128"/>
+
+                    <!-- Commerce Court -->
+                    <rect x="890" y="150" width="30" height="150"/>
+                    <polygon points="890,150 905,142 920,150"/>
+
+                    <!-- Brookfield Place (stepped crown) -->
+                    <rect x="928" y="135" width="30" height="165"/>
+                    <rect x="933" y="128" width="20" height="10"/>
+                    <rect x="937" y="122" width="12" height="8"/>
+
+                    <!-- Royal Bank Plaza (twin towers) -->
+                    <rect x="966" y="160" width="26" height="140"/>
+                    <rect x="998" y="152" width="26" height="148"/>
+
+                    <!-- The L Tower (curved east side) -->
+                    <path d="M1032,125 L1032,300 L1058,300 L1058,142 Q1045,118 1032,125 Z"/>
+
+                    <!-- One King West / taller east towers -->
+                    <rect x="1066" y="140" width="28" height="160"/>
+                    <polygon points="1066,140 1080,130 1094,140"/>
+                    <rect x="1100" y="148" width="32" height="152"/>
+                    <rect x="1140" y="155" width="26" height="145"/>
                 </g>
+
+                <!-- ============================================ -->
+                <!-- EAST CONDOS (trailing off to the right)      -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgFront)" opacity="0.6">
+                    <rect x="1175" y="165" width="28" height="135"/>
+                    <polygon points="1175,165 1189,155 1203,165"/>
+                    <rect x="1210" y="172" width="24" height="128"/>
+                    <rect x="1242" y="160" width="30" height="140"/>
+                    <rect x="1280" y="170" width="26" height="130"/>
+                    <rect x="1312" y="180" width="24" height="120"/>
+                    <rect x="1345" y="188" width="28" height="112"/>
+                    <rect x="1380" y="195" width="22" height="105"/>
+                    <rect x="1410" y="205" width="30" height="95"/>
+                </g>
+
+                <!-- ============================================ -->
+                <!-- FAR LEFT (small buildings west of dome)      -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgFront)" opacity="0.55">
+                    <rect x="0" y="238" width="26" height="62"/>
+                    <rect x="32" y="228" width="22" height="72"/>
+                    <rect x="60" y="220" width="28" height="80"/>
+                    <polygon points="60,220 74,212 88,220"/>
+                    <rect x="95" y="225" width="24" height="75"/>
+                    <rect x="126" y="218" width="28" height="82"/>
+                </g>
+
+                <!-- ============================================ -->
+                <!-- MID-LAYER FILL (behind main foreground)      -->
+                <!-- ============================================ -->
+                <g fill="url(#bldgMid)" opacity="0.5">
+                    <rect x="350" y="195" width="24" height="105"/>
+                    <rect x="500" y="188" width="22" height="112"/>
+                    <rect x="645" y="190" width="20" height="110"/>
+                    <rect x="720" y="185" width="18" height="115"/>
+                    <rect x="840" y="188" width="16" height="112"/>
+                    <rect x="960" y="192" width="18" height="108"/>
+                    <rect x="1060" y="188" width="16" height="112"/>
+                    <rect x="1135" y="195" width="20" height="105"/>
+                </g>
+
+                <!-- ============================================ -->
+                <!-- WINDOW LIGHTS (warm scattered dots)          -->
+                <!-- ============================================ -->
+                <g fill="rgba(255,248,240,0.22)">
+                    <!-- First Canadian Place -->
+                    <rect x="738" y="130" width="2" height="2" rx="0.5"/>
+                    <rect x="748" y="130" width="2" height="2" rx="0.5"/>
+                    <rect x="756" y="130" width="2" height="2" rx="0.5"/>
+                    <rect x="738" y="150" width="2" height="2" rx="0.5"/>
+                    <rect x="750" y="150" width="2" height="2" rx="0.5"/>
+                    <rect x="740" y="175" width="2" height="2" rx="0.5"/>
+                    <rect x="755" y="175" width="2" height="2" rx="0.5"/>
+
+                    <!-- Scotia Plaza -->
+                    <rect x="856" y="140" width="2" height="2" rx="0.5"/>
+                    <rect x="866" y="140" width="2" height="2" rx="0.5"/>
+                    <rect x="858" y="165" width="2" height="2" rx="0.5"/>
+                    <rect x="870" y="165" width="2" height="2" rx="0.5"/>
+
+                    <!-- TD Centre -->
+                    <rect x="782" y="160" width="2" height="2" rx="0.5"/>
+                    <rect x="792" y="160" width="2" height="2" rx="0.5"/>
+                    <rect x="820" y="170" width="2" height="2" rx="0.5"/>
+                    <rect x="830" y="170" width="2" height="2" rx="0.5"/>
+
+                    <!-- Brookfield / Royal Bank -->
+                    <rect x="936" y="145" width="2" height="2" rx="0.5"/>
+                    <rect x="946" y="145" width="2" height="2" rx="0.5"/>
+                    <rect x="974" y="172" width="2" height="2" rx="0.5"/>
+                    <rect x="1006" y="165" width="2" height="2" rx="0.5"/>
+
+                    <!-- L Tower / east towers -->
+                    <rect x="1040" y="140" width="2" height="2" rx="0.5"/>
+                    <rect x="1048" y="155" width="2" height="2" rx="0.5"/>
+                    <rect x="1074" y="152" width="2" height="2" rx="0.5"/>
+                    <rect x="1110" y="160" width="2" height="2" rx="0.5"/>
+
+                    <!-- West condos -->
+                    <rect x="455" y="180" width="2" height="2" rx="0.5"/>
+                    <rect x="465" y="180" width="2" height="2" rx="0.5"/>
+                    <rect x="522" y="178" width="2" height="2" rx="0.5"/>
+                    <rect x="388" y="188" width="2" height="2" rx="0.5"/>
+                </g>
+
+                <!-- ============================================ -->
+                <!-- WATERFRONT + GROUND FADE                     -->
+                <!-- ============================================ -->
+                <line x1="0" y1="282" x2="1440" y2="282" stroke="rgba(184,105,78,0.05)" stroke-width="1"/>
+                <rect x="0" y="280" width="1440" height="20" fill="url(#waterGrad)"/>
+                <rect x="0" y="292" width="1440" height="8" fill="#F7F3EE"/>
             </svg>
         </div>
     </header>
