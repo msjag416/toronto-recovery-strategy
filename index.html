@@ -441,7 +441,7 @@
         .content-wrap {
             max-width: 780px;
             margin: 0 auto;
-            padding: 3rem 1.5rem 4rem;
+            padding: 3rem 1.5rem 1.5rem;
         }
 
         .content-wrap h2 {
@@ -631,6 +631,51 @@
             border-radius: 20px;
         }
 
+        /* ===== NETWORKING CTA ===== */
+        .networking-cta {
+            background: var(--color-sage);
+            color: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 1rem 0 2rem;
+            box-shadow: 0 4px 15px rgba(123, 143, 122, 0.2);
+        }
+        .networking-cta .label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--color-highlight);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .networking-cta p {
+            color: #fff;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .networking-cta a.btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.6rem;
+            background: #fff;
+            color: var(--color-sage) !important;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            letter-spacing: 0.03em;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .networking-cta a.btn-cta:hover {
+            background: var(--color-highlight);
+            transform: translateY(-1px);
+        }
+
         /* ===== FOOTER ===== */
         .site-footer {
             background: var(--color-charcoal);
@@ -675,9 +720,9 @@
 
         /* ===== CONTACT FORM ===== */
         .contact-section {
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem 4rem;
             background: var(--color-highlight);
-            margin-top: 3rem;
+            margin-top: 0;
         }
         .contact-header {
             text-align: center;
@@ -793,7 +838,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             .hero { padding: 2rem 1.2rem 3rem; }
-            .content-wrap { padding: 2rem 1.2rem 3rem; }
+            .content-wrap { padding: 2rem 1.2rem 1.5rem; }
             .credential-anchor { padding: 1.8rem 1.2rem; }
             .credential-inner { flex-direction: column; text-align: center; align-items: center; }
             .credential-badges { justify-content: center; }
@@ -999,12 +1044,20 @@
         <p>I also write regularly on <a href="https://medium.com/@msjag416" target="_blank" rel="noopener">Medium</a> about the intersection of healthcare, professional well-being, and the realities of working in high-stress environments. If you're looking for longer reads on burnout prevention, workplace psychology, and health topics backed by clinical experience, that's where to find them.</p>
 
         <!-- Latest from Medium -->
-        <section style="margin-top: 2.5rem;">
+        <section style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
             <div class="spoke-label">From my Medium Blog</div>
             <div id="articles-container" class="spoke-grid">
                 <p>Loading the latest articles...</p>
             </div>
         </section>
+
+        <div class="networking-cta">
+            <span class="label">Let's Connect</span>
+            <p>I'm always interested in meeting up with other like-minded professionals across the city. Connecting with peers is a necessary part of maintaining a healthy routine outside of clinical environments. When I'm not working or writing, I enjoy working out, playing pool, and practicing table tennis. I also spend time discussing politics, relaxing on local patios, rollerskating, dining out, and dancing to house music. Please use the contact form below if you want to connect over shared interests or discuss healthcare protocols.</p>
+            <a href="#contact" class="btn-cta">
+                Drop Me a Message <i data-lucide="arrow-down" style="width: 16px; height: 16px;"></i>
+            </a>
+        </div>
 
     </main>
 
