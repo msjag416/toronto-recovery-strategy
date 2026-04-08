@@ -640,6 +640,25 @@
             text-align: center;
             margin: 1rem 0 2rem;
             box-shadow: 0 4px 15px rgba(123, 143, 122, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .networking-cta > * {
+            position: relative;
+            z-index: 1;
+        }
+        .stick-figure {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
         }
         .networking-cta .label {
             font-size: 0.72rem;
@@ -1052,6 +1071,57 @@
         </section>
 
         <div class="networking-cta">
+            <!-- Working Out -->
+            <svg class="stick-figure" style="top: 8%; left: 4%; transform: rotate(-10deg);" viewBox="0 0 24 24">
+                <circle cx="12" cy="6" r="2.5"/>
+                <line x1="12" y1="8.5" x2="12" y2="16"/>
+                <line x1="12" y1="16" x2="8" y2="22"/> <line x1="12" y1="16" x2="16" y2="22"/>
+                <polyline points="6,9 12,11 18,9"/>
+                <line x1="4" y1="9" x2="8" y2="9"/> <line x1="16" y1="9" x2="20" y2="9"/>
+            </svg>
+            <!-- House Music / Dancing -->
+            <svg class="stick-figure" style="top: 8%; right: 4%; transform: rotate(15deg);" viewBox="0 0 24 24">
+                <circle cx="12" cy="4" r="2.5"/>
+                <line x1="12" y1="6.5" x2="12" y2="14"/>
+                <polyline points="8,21 12,14 14,20 18,18"/>
+                <polyline points="7,3 12,9 17,4"/>
+            </svg>
+            <!-- Dining / Patios -->
+            <svg class="stick-figure" style="top: 40%; left: 2%;" viewBox="0 0 24 24">
+                <circle cx="8" cy="6" r="2.5"/>
+                <line x1="8" y1="8.5" x2="8" y2="16"/>
+                <polyline points="8,16 14,16 14,22"/>
+                <polyline points="8,11 12,12 16,11"/>
+                <line x1="14" y1="13" x2="22" y2="13"/> <line x1="18" y1="13" x2="18" y2="22"/>
+                <rect x="15" y="10" width="2" height="3"/>
+            </svg>
+            <!-- Playing Pool -->
+            <svg class="stick-figure" style="top: 40%; right: 2%;" viewBox="0 0 24 24">
+                <circle cx="7" cy="7" r="2.5"/>
+                <line x1="7" y1="9.5" x2="13" y2="14"/>
+                <polyline points="13,22 13,14 17,22"/>
+                <polyline points="9,11 15,13 18,10"/>
+                <line x1="2" y1="12" x2="22" y2="8"/>
+            </svg>
+            <!-- Table Tennis -->
+            <svg class="stick-figure" style="bottom: 8%; left: 4%; transform: rotate(5deg);" viewBox="0 0 24 24">
+                <circle cx="12" cy="5" r="2.5"/>
+                <line x1="12" y1="7.5" x2="12" y2="15"/>
+                <polyline points="7,21 12,15 17,21"/>
+                <polyline points="12,10 18,10 18,7"/>
+                <circle cx="18" cy="6" r="1.5"/>
+                <line x1="12" y1="10" x2="6" y2="12"/>
+            </svg>
+            <!-- Rollerskating -->
+            <svg class="stick-figure" style="bottom: 8%; right: 4%; transform: rotate(-5deg);" viewBox="0 0 24 24">
+                <circle cx="14" cy="5" r="2.5"/>
+                <line x1="14" y1="7.5" x2="10" y2="15"/>
+                <polyline points="5,20 10,15 15,20"/>
+                <circle cx="4" cy="22" r="1"/> <circle cx="6" cy="22" r="1"/>
+                <circle cx="14" cy="22" r="1"/> <circle cx="16" cy="22" r="1"/>
+                <polyline points="6,12 12,10 18,12"/>
+            </svg>
+
             <span class="label">Let's Connect</span>
             <p>I'm always interested in meeting up with other like-minded professionals across the city. Connecting with peers is a necessary part of maintaining a healthy routine outside of clinical environments. When I'm not working or writing, I enjoy working out, playing pool, and practicing table tennis. I also spend time discussing politics, relaxing on local patios, rollerskating, dining out, and dancing to house music. Please use the contact form below if you want to connect over shared interests or discuss healthcare protocols.</p>
             <a href="#contact" class="btn-cta">
