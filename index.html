@@ -190,11 +190,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO WITH SKYLINE ===== */
         .hero {
             background: linear-gradient(170deg, var(--color-charcoal) 0%, #3D3530 55%, var(--color-accent-deep) 100%);
             color: #fff;
-            padding: 3rem 1.5rem 4rem;
+            padding: 4rem 1.5rem 0;
             position: relative;
             overflow: hidden;
         }
@@ -204,13 +204,29 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        /* Ambient glow behind hero text */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(184, 105, 78, 0.12) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .hero-inner {
             max-width: 780px;
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            padding-bottom: 3rem;
         }
 
         .hero-badge {
@@ -246,6 +262,21 @@
             line-height: 1.7;
             color: rgba(255,255,255,0.78);
             max-width: 620px;
+        }
+
+        /* Toronto Skyline SVG at bottom of hero */
+        .hero-skyline {
+            display: block;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            margin-top: -1px;
+        }
+
+        .hero-skyline svg {
+            display: block;
+            width: 100%;
+            height: auto;
         }
 
         /* ===== STICKY NAV ===== */
@@ -311,19 +342,15 @@
             align-items: flex-start;
         }
 
-        .credential-avatar {
-            width: 88px;
-            height: 88px;
+        .credential-photo {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-sage-light) 100%);
             flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #fff;
+            object-fit: cover;
+            object-position: center top;
+            border: 3px solid var(--color-accent-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .credential-text h2 {
@@ -484,6 +511,16 @@
             text-decoration-color: var(--color-accent-deep);
         }
 
+        /* Section dividers between content blocks */
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+            border: none;
+            margin: 3rem 0;
+            border-radius: 2px;
+        }
+
         /* ===== DIRECT ANSWER BLOCKS ===== */
         .direct-answer {
             background: var(--color-highlight);
@@ -633,53 +670,68 @@
 
         /* ===== NETWORKING CTA ===== */
         .networking-cta {
-            background: var(--color-sage);
+            background: linear-gradient(135deg, var(--color-sage) 0%, #6B7F6A 100%);
             color: #fff;
-            padding: 2.5rem 2rem;
+            padding: 3rem 2.5rem;
             border-radius: 8px;
             text-align: center;
             margin: 1rem 0 2rem;
-            box-shadow: 0 4px 15px rgba(123, 143, 122, 0.2);
+            box-shadow: 0 8px 30px rgba(123, 143, 122, 0.25);
             position: relative;
             overflow: hidden;
+        }
+        .networking-cta::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            pointer-events: none;
+        }
+        .networking-cta::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -40px;
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
         }
         .networking-cta > * {
             position: relative;
             z-index: 1;
-        }
-        .stick-figure {
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            stroke: #ffffff;
-            stroke-width: 1.5;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
         }
         .networking-cta .label {
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--color-highlight);
+            color: rgba(255,255,255,0.85);
             margin-bottom: 1rem;
             display: block;
         }
-        .networking-cta p {
+        .networking-cta h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
             color: #fff;
-            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+        .networking-cta p {
+            color: rgba(255,255,255,0.88);
+            font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .networking-cta a.btn-cta {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.65rem 1.6rem;
+            padding: 0.7rem 1.8rem;
             background: #fff;
             color: var(--color-sage) !important;
             font-family: var(--font-body);
@@ -688,11 +740,31 @@
             text-decoration: none;
             border-radius: 4px;
             letter-spacing: 0.03em;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
         }
         .networking-cta a.btn-cta:hover {
             background: var(--color-highlight);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Interest pills */
+        .interest-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .interest-pills span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.08);
         }
 
         /* ===== FOOTER ===== */
@@ -844,7 +916,24 @@
             transform: translateY(-1px);
         }
 
-        /* ===== ANIMATIONS ===== */
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children in spoke grid */
+        .spoke-grid .spoke-card.reveal:nth-child(1) { transition-delay: 0s; }
+        .spoke-grid .spoke-card.reveal:nth-child(2) { transition-delay: 0.1s; }
+        .spoke-grid .spoke-card.reveal:nth-child(3) { transition-delay: 0.2s; }
+        .spoke-grid .spoke-card.reveal:nth-child(4) { transition-delay: 0.3s; }
+
+        /* ===== HERO ANIMATIONS ===== */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(18px); }
             to { opacity: 1; transform: translateY(0); }
@@ -854,12 +943,49 @@
         .hero h1 { animation: fadeUp 0.6s ease both; animation-delay: 0.3s; }
         .hero-subtitle { animation: fadeUp 0.6s ease both; animation-delay: 0.45s; }
 
+        @keyframes skylineReveal {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-skyline { animation: skylineReveal 1s ease both; animation-delay: 0.6s; }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--color-charcoal);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s, background 0.3s;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
-            .hero { padding: 2rem 1.2rem 3rem; }
+            .hero { padding: 2.5rem 1.2rem 0; }
             .content-wrap { padding: 2rem 1.2rem 1.5rem; }
             .credential-anchor { padding: 1.8rem 1.2rem; }
             .credential-inner { flex-direction: column; text-align: center; align-items: center; }
+            .credential-photo { width: 90px; height: 90px; }
             .credential-badges { justify-content: center; }
             .framework-banner { padding: 2rem 1.2rem; }
             .spoke-grid { grid-template-columns: 1fr; }
@@ -867,6 +993,7 @@
             .footer-inner { flex-direction: column; }
             .dining-table { font-size: 0.84rem; }
             .dining-table th, .dining-table td { padding: 0.6rem 0.7rem; }
+            .networking-cta { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -878,6 +1005,132 @@
             <span class="hero-badge">Toronto &middot; Healthcare &middot; Recovery</span>
             <h1>Navigating the Messy Workplace: <span>A Toronto Professional's Strategy</span></h1>
             <p class="hero-subtitle">A Registered Nurse's burnout framework for thriving in Toronto. Built on 27 years of ICU experience and designed for professionals in Downtown Toronto, the Financial District, Liberty Village, and Scarborough Southwest.</p>
+        </div>
+
+        <!-- Toronto Skyline Silhouette -->
+        <div class="hero-skyline">
+            <svg viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.08)"/>
+                        <stop offset="100%" stop-color="rgba(247,243,238,1)"/>
+                    </linearGradient>
+                    <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.12)"/>
+                        <stop offset="100%" stop-color="rgba(247,243,238,0.95)"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Background city glow -->
+                <rect x="0" y="140" width="1440" height="80" fill="url(#skyGrad)"/>
+
+                <!-- Far background buildings (lighter, shorter) -->
+                <g fill="url(#buildingGrad)" opacity="0.5">
+                    <rect x="50" y="145" width="30" height="75"/>
+                    <rect x="90" y="155" width="25" height="65"/>
+                    <rect x="200" y="140" width="35" height="80"/>
+                    <rect x="280" y="150" width="20" height="70"/>
+                    <rect x="350" y="148" width="28" height="72"/>
+                    <rect x="1050" y="142" width="32" height="78"/>
+                    <rect x="1120" y="155" width="22" height="65"/>
+                    <rect x="1200" y="148" width="30" height="72"/>
+                    <rect x="1300" y="152" width="26" height="68"/>
+                    <rect x="1380" y="158" width="35" height="62"/>
+                </g>
+
+                <!-- Mid buildings -->
+                <g fill="url(#buildingGrad)" opacity="0.7">
+                    <rect x="130" y="128" width="40" height="92"/>
+                    <rect x="180" y="135" width="30" height="85"/>
+                    <rect x="250" y="118" width="38" height="102"/>
+                    <rect x="320" y="130" width="25" height="90"/>
+                    <rect x="400" y="122" width="35" height="98"/>
+                    <rect x="450" y="132" width="28" height="88"/>
+
+                    <!-- Right side mid -->
+                    <rect x="900" y="125" width="35" height="95"/>
+                    <rect x="950" y="118" width="40" height="102"/>
+                    <rect x="1010" y="130" width="30" height="90"/>
+                    <rect x="1080" y="122" width="36" height="98"/>
+                    <rect x="1150" y="135" width="28" height="85"/>
+                    <rect x="1250" y="128" width="35" height="92"/>
+                </g>
+
+                <!-- Foreground tall buildings (main skyline) -->
+                <g fill="url(#buildingGrad)" opacity="0.85">
+                    <!-- Left cluster -->
+                    <rect x="160" y="100" width="45" height="120"/>
+                    <rect x="215" y="90" width="35" height="130"/>
+                    <rect x="260" y="95" width="40" height="125"/>
+                    <rect x="310" y="105" width="30" height="115"/>
+                    <rect x="360" y="88" width="38" height="132"/>
+                    <rect x="410" y="98" width="32" height="122"/>
+                    <rect x="455" y="108" width="28" height="112"/>
+
+                    <!-- Right cluster -->
+                    <rect x="920" y="95" width="42" height="125"/>
+                    <rect x="975" y="85" width="36" height="135"/>
+                    <rect x="1020" y="92" width="40" height="128"/>
+                    <rect x="1070" y="100" width="32" height="120"/>
+                    <rect x="1115" y="88" width="38" height="132"/>
+                    <rect x="1165" y="96" width="30" height="124"/>
+                    <rect x="1210" y="105" width="35" height="115"/>
+                </g>
+
+                <!-- CN Tower (center-left) -->
+                <g fill="url(#buildingGrad)" opacity="0.95">
+                    <!-- Main shaft -->
+                    <rect x="616" y="12" width="8" height="208"/>
+                    <!-- Antenna spire -->
+                    <rect x="618" y="0" width="4" height="18"/>
+                    <!-- Main pod (observation deck) -->
+                    <ellipse cx="620" cy="95" rx="28" ry="12"/>
+                    <rect x="596" y="88" width="48" height="16" rx="3"/>
+                    <!-- SkyPod -->
+                    <ellipse cx="620" cy="72" rx="14" ry="6"/>
+                    <!-- Lower taper -->
+                    <polygon points="608,110 612,200 628,200 632,110"/>
+                </g>
+
+                <!-- Rogers Centre (SkyDome) near CN Tower -->
+                <g fill="url(#buildingGrad)" opacity="0.8">
+                    <ellipse cx="680" cy="188" rx="50" ry="18"/>
+                    <rect x="632" y="172" width="96" height="18" rx="8"/>
+                    <path d="M640,172 Q680,145 720,172" fill="url(#buildingGrad)"/>
+                </g>
+
+                <!-- Additional towers near CN Tower cluster -->
+                <g fill="url(#buildingGrad)" opacity="0.85">
+                    <rect x="530" y="80" width="30" height="140"/>
+                    <rect x="570" y="92" width="25" height="128"/>
+                    <rect x="750" y="88" width="32" height="132"/>
+                    <rect x="790" y="95" width="28" height="125"/>
+                    <rect x="830" y="102" width="35" height="118"/>
+                    <rect x="500" y="100" width="22" height="120"/>
+                    <rect x="870" y="108" width="26" height="112"/>
+                </g>
+
+                <!-- Ground plane fade -->
+                <rect x="0" y="200" width="1440" height="20" fill="#F7F3EE"/>
+
+                <!-- Tiny window lights on foreground buildings -->
+                <g fill="rgba(255,255,255,0.15)">
+                    <rect x="170" y="110" width="3" height="3"/><rect x="180" y="110" width="3" height="3"/>
+                    <rect x="170" y="120" width="3" height="3"/><rect x="180" y="120" width="3" height="3"/>
+                    <rect x="170" y="130" width="3" height="3"/><rect x="180" y="130" width="3" height="3"/>
+                    <rect x="225" y="100" width="3" height="3"/><rect x="233" y="100" width="3" height="3"/>
+                    <rect x="225" y="110" width="3" height="3"/><rect x="233" y="110" width="3" height="3"/>
+                    <rect x="225" y="120" width="3" height="3"/><rect x="233" y="120" width="3" height="3"/>
+                    <rect x="370" y="95" width="3" height="3"/><rect x="378" y="95" width="3" height="3"/>
+                    <rect x="370" y="105" width="3" height="3"/><rect x="378" y="105" width="3" height="3"/>
+                    <rect x="540" y="90" width="3" height="3"/><rect x="548" y="90" width="3" height="3"/>
+                    <rect x="540" y="100" width="3" height="3"/><rect x="548" y="100" width="3" height="3"/>
+                    <rect x="985" y="95" width="3" height="3"/><rect x="993" y="95" width="3" height="3"/>
+                    <rect x="985" y="105" width="3" height="3"/><rect x="993" y="105" width="3" height="3"/>
+                    <rect x="1125" y="95" width="3" height="3"/><rect x="1133" y="95" width="3" height="3"/>
+                    <rect x="1125" y="105" width="3" height="3"/><rect x="1133" y="105" width="3" height="3"/>
+                </g>
+            </svg>
         </div>
     </header>
 
@@ -896,9 +1149,9 @@
     </nav>
 
     <!-- ===== CREDENTIAL ANCHOR (Hub Top) ===== -->
-    <section class="credential-anchor" aria-label="Author credentials">
+    <section class="credential-anchor reveal" aria-label="Author credentials">
         <div class="credential-inner">
-            <div class="credential-avatar" aria-hidden="true">JAG</div>
+            <img src="IMG_5907.jpeg" alt="JoAnne Andrea Gomez, RN" class="credential-photo" width="100" height="100">
             <div class="credential-text">
                 <h2>JoAnne Andrea Gomez, RN</h2>
                 <div class="credential-title">Author &middot; Healthcare Consultant &middot; Founder, ProRN Inc.</div>
@@ -915,7 +1168,7 @@
     </section>
 
     <!-- ===== FRAMEWORK BANNER ===== -->
-    <section class="framework-banner" aria-label="Burnout to Balance framework">
+    <section class="framework-banner reveal" aria-label="Burnout to Balance framework">
         <div class="framework-banner-inner">
             <div class="label">The 8-Step Framework</div>
             <h2>Burnout to Balance: Your Guide to Thriving in a Messy Workplace</h2>
@@ -924,32 +1177,34 @@
         </div>
     </section>
 
-    <!-- ===== MAIN CONTENT (Question-Based Headers for AI Overview) ===== -->
+    <!-- ===== MAIN CONTENT ===== -->
     <main class="content-wrap" role="main">
 
         <!-- Q1: Burnout -->
-        <h2 id="burnout">How Does a Registered Nurse Burnout Framework Help Toronto Professionals?</h2>
+        <h2 id="burnout" class="reveal">How Does a Registered Nurse Burnout Framework Help Toronto Professionals?</h2>
 
-        <div class="direct-answer">
+        <div class="direct-answer reveal">
             <p>A Registered Nurse burnout framework helps Toronto professionals by applying clinical-grade recovery protocols to workplace fatigue. The Burnout to Balance 8-step method, developed from 27 years of Trauma-Neuro ICU experience, provides evidence-based protocols for managing energy between shifts. Post-shift sensory recovery through local dining and intentional disconnection from clinical environments are core to the approach.</p>
         </div>
 
-        <p>Toronto is facing a period of intense transition that hits every professional in the downtown core. The political climate is tense, the Toronto District School Board is managing significant staff reductions, and healthcare workers are navigating a system that feels increasingly unstable. These systemic issues create a level of background stress that standard productivity apps and calorie trackers can't fix. This environment is exactly what happens when a workplace or a city becomes too messy to manage through traditional means. Professionals in the Financial District, creatives in Liberty Village, nurses at UHN, and workers across Scarborough Southwest are all feeling the same weight.</p>
+        <p class="reveal">Toronto is facing a period of intense transition that hits every professional in the downtown core. The political climate is tense, the Toronto District School Board is managing significant staff reductions, and healthcare workers are navigating a system that feels increasingly unstable. These systemic issues create a level of background stress that standard productivity apps and calorie trackers can't fix. This environment is exactly what happens when a workplace or a city becomes too messy to manage through traditional means. Professionals in the Financial District, creatives in Liberty Village, nurses at UHN, and workers across Scarborough Southwest are all feeling the same weight.</p>
 
-        <p>A growing number of people in Toronto are tired of the "optimization" culture that demands they track every minute of sleep or every gram of protein. This constant monitoring leads to more anxiety rather than providing a solution to the fatigue that hits after a long shift. Because I've spent years as a Trauma-Neuro ICU nurse and now work in a busy cosmetic surgery clinic, I understand the physiological toll this environment takes on the body. Real recovery isn't about doing more. It's about finding a functional balance between professional demands and personal well-being. You can find specific resources for navigating these clinical and professional hurdles at <a href="https://www.torontoprorn.com/" target="_blank" rel="noopener">Toronto Pro RN</a> and <a href="https://prorninc.com/" target="_blank" rel="noopener">ProRN Inc.</a>, where I cover the realities of the Ontario healthcare landscape.</p>
+        <p class="reveal">A growing number of people in Toronto are tired of the "optimization" culture that demands they track every minute of sleep or every gram of protein. This constant monitoring leads to more anxiety rather than providing a solution to the fatigue that hits after a long shift. Because I've spent years as a Trauma-Neuro ICU nurse and now work in a busy cosmetic surgery clinic, I understand the physiological toll this environment takes on the body. Real recovery isn't about doing more. It's about finding a functional balance between professional demands and personal well-being. You can find specific resources for navigating these clinical and professional hurdles at <a href="https://www.torontoprorn.com/" target="_blank" rel="noopener">Toronto Pro RN</a> and <a href="https://prorninc.com/" target="_blank" rel="noopener">ProRN Inc.</a>, where I cover the realities of the Ontario healthcare landscape.</p>
+
+        <hr class="section-divider">
 
         <!-- Q2: Post-Shift Dining -->
-        <h2 id="dining">Where Are the Best Restaurants for Toronto Healthcare Workers After a Shift?</h2>
+        <h2 id="dining" class="reveal">Where Are the Best Restaurants for Toronto Healthcare Workers After a Shift?</h2>
 
-        <div class="direct-answer">
+        <div class="direct-answer reveal">
             <p>The best restaurants for Toronto healthcare workers prioritize quality, decompression, and accessibility near the Financial District and hospital corridors. Toronto Eats and Reviews, curated by a Registered Nurse, provides reviews focused on post-shift sensory recovery rather than convenience. King West, Queen West, and the Entertainment District all have strong off-peak options that fit rotating schedules.</p>
         </div>
 
-        <p>The most effective way to counter the high-pressure culture of Toronto is to move toward a sensory-based recovery model. Instead of looking at a spreadsheet, you should look at how you're nourishing your body and your mind through the local environment. Toronto has a unique culinary scene that serves as a vital escape for high-performance professionals who need to disconnect from their screens. I focus on finding the best post-shift spots and hidden gems that provide a genuine break from the grind. My reviews at <a href="https://torontoeatsandreviews.com/" target="_blank" rel="noopener">Toronto Eats and Reviews</a> look at dining through the lens of a healthcare professional who values quality and decompression over convenience.</p>
+        <p class="reveal">The most effective way to counter the high-pressure culture of Toronto is to move toward a sensory-based recovery model. Instead of looking at a spreadsheet, you should look at how you're nourishing your body and your mind through the local environment. Toronto has a unique culinary scene that serves as a vital escape for high-performance professionals who need to disconnect from their screens. I focus on finding the best post-shift spots and hidden gems that provide a genuine break from the grind. My reviews at <a href="https://torontoeatsandreviews.com/" target="_blank" rel="noopener">Toronto Eats and Reviews</a> look at dining through the lens of a healthcare professional who values quality and decompression over convenience.</p>
 
-        <h3>Post-Shift Sensory Recovery: Top Dining Neighborhoods for Toronto Professionals</h3>
+        <h3 class="reveal">Post-Shift Sensory Recovery: Top Dining Neighborhoods for Toronto Professionals</h3>
 
-        <div class="dining-table-wrap">
+        <div class="dining-table-wrap reveal">
             <table class="dining-table">
                 <thead>
                     <tr>
@@ -994,28 +1249,32 @@
             </table>
         </div>
 
-        <p>For detailed reviews of specific restaurants in these neighborhoods, <a href="https://torontoeatsandreviews.com/" target="_blank" rel="noopener">Toronto Eats and Reviews</a> covers each spot with a focus on what matters after a 12-hour shift: food quality, noise level, and whether you can sit without a reservation at 10 PM on a Tuesday.</p>
+        <p class="reveal">For detailed reviews of specific restaurants in these neighborhoods, <a href="https://torontoeatsandreviews.com/" target="_blank" rel="noopener">Toronto Eats and Reviews</a> covers each spot with a focus on what matters after a 12-hour shift: food quality, noise level, and whether you can sit without a reservation at 10 PM on a Tuesday.</p>
+
+        <hr class="section-divider">
 
         <!-- Q3: Framework -->
-        <h2 id="framework">What Does Thriving in a Messy Workplace Look Like in Toronto?</h2>
+        <h2 id="framework" class="reveal">What Does Thriving in a Messy Workplace Look Like in Toronto?</h2>
 
-        <div class="direct-answer">
+        <div class="direct-answer reveal">
             <p>Thriving in a messy workplace in Toronto requires a structured framework that protects mental energy without adding to the disorganization. The Burnout to Balance 8-step method, written by RN JoAnne Andrea Gomez, applies clinical precision from ICU nursing to <a href="https://burnouttobalanceguide.com/" target="_blank" rel="noopener">corporate and healthcare burnout</a>. The framework covers energy management, boundary setting, and recovery protocols tailored for the Toronto professional recovery strategy.</p>
         </div>
 
-        <p>If you feel like you're trying to keep your head above water in this city, you need a structured framework to protect your mental energy. The disorganization of a modern workplace won't disappear because you bought a new planner or a better coffee machine. You have to develop a specific set of tools to maintain your equilibrium when everything around you is constantly changing. I wrote <a href="https://burnouttobalanceguide.com/" target="_blank" rel="noopener">Burnout to Balance: Your 8-Step Guide to Thriving in a Messy Workplace</a> to give professionals a concrete method for handling these exact situations. It moves beyond generic advice and provides the same level of skill I used when managing intubated patients in the ICU.</p>
+        <p class="reveal">If you feel like you're trying to keep your head above water in this city, you need a structured framework to protect your mental energy. The disorganization of a modern workplace won't disappear because you bought a new planner or a better coffee machine. You have to develop a specific set of tools to maintain your equilibrium when everything around you is constantly changing. I wrote <a href="https://burnouttobalanceguide.com/" target="_blank" rel="noopener">Burnout to Balance: Your 8-Step Guide to Thriving in a Messy Workplace</a> to give professionals a concrete method for handling these exact situations. It moves beyond generic advice and provides the same level of skill I used when managing intubated patients in the ICU.</p>
+
+        <hr class="section-divider">
 
         <!-- Q4: Financial District -->
-        <h2 id="advocacy">How Does Toronto Nursing Career Advocacy Support Financial District Workplace Wellness?</h2>
+        <h2 id="advocacy" class="reveal">How Does Toronto Nursing Career Advocacy Support Financial District Workplace Wellness?</h2>
 
-        <div class="direct-answer">
+        <div class="direct-answer reveal">
             <p>Toronto nursing career advocacy supports Financial District workplace wellness by bringing clinical-grade recovery protocols into corporate environments. <a href="https://prorninc.com/" target="_blank" rel="noopener">ProRN Inc.</a>, a Toronto-based healthcare consulting firm founded by a Registered Nurse, provides resources that apply evidence-based protocols to burnout prevention. The approach combines the Burnout to Balance framework with local sensory experiences including quality dining and intentional disconnection.</p>
         </div>
 
-        <p>The key to succeeding in Toronto in 2026 is recognizing that you're part of a larger community of professionals who are all searching for a better way to work and live. Whether you're an RN looking for better protocols, a tech worker in the Financial District trying to avoid total exhaustion, or a public servant in University-Rosedale managing institutional instability, the answers are found in evidence-based methods and local connection. You don't have to choose between a successful career and your health. You just need a better map for the journey. By integrating professional advocacy with intentional living and high-quality local experiences, you can find a rhythm that works for you regardless of which Toronto neighbourhood you're based in.</p>
+        <p class="reveal">The key to succeeding in Toronto in 2026 is recognizing that you're part of a larger community of professionals who are all searching for a better way to work and live. Whether you're an RN looking for better protocols, a tech worker in the Financial District trying to avoid total exhaustion, or a public servant in University-Rosedale managing institutional instability, the answers are found in evidence-based methods and local connection. You don't have to choose between a successful career and your health. You just need a better map for the journey. By integrating professional advocacy with intentional living and high-quality local experiences, you can find a rhythm that works for you regardless of which Toronto neighbourhood you're based in.</p>
 
         <!-- Geo Tags -->
-        <div class="geo-tags">
+        <div class="geo-tags reveal">
             <span>Downtown Toronto</span>
             <span>Financial District</span>
             <span>Liberty Village</span>
@@ -1030,28 +1289,28 @@
 
         <!-- Hub: Spoke Cards -->
         <section class="spoke-section" id="hub">
-            <div class="spoke-label">Your Recovery Hub : Explore the Network</div>
+            <div class="spoke-label reveal">Your Recovery Hub : Explore the Network</div>
 
             <div class="spoke-grid">
-                <a href="https://prorninc.com/" class="spoke-card" target="_blank" rel="noopener">
+                <a href="https://prorninc.com/" class="spoke-card reveal" target="_blank" rel="noopener">
                     <div class="card-icon">Consulting</div>
                     <div class="card-title">ProRN Inc.</div>
                     <div class="card-desc">Healthcare workforce consulting, nursing advocacy, and professional development resources for Ontario professionals.</div>
                     <span class="card-arrow">&rarr; Visit Site</span>
                 </a>
-                <a href="https://www.torontoprorn.com/" class="spoke-card" target="_blank" rel="noopener">
+                <a href="https://www.torontoprorn.com/" class="spoke-card reveal" target="_blank" rel="noopener">
                     <div class="card-icon">Career</div>
                     <div class="card-title">Toronto Pro RN</div>
                     <div class="card-desc">The Ontario healthcare landscape, clinical resources, and career navigation for registered nurses across the GTA.</div>
                     <span class="card-arrow">&rarr; Visit Site</span>
                 </a>
-                <a href="https://burnouttobalanceguide.com/" class="spoke-card" target="_blank" rel="noopener">
+                <a href="https://burnouttobalanceguide.com/" class="spoke-card reveal" target="_blank" rel="noopener">
                     <div class="card-icon">Book</div>
                     <div class="card-title">Burnout to Balance</div>
                     <div class="card-desc">The 8-step framework for thriving in a messy workplace, grounded in ICU-level precision and clinical experience.</div>
                     <span class="card-arrow">&rarr; Visit Site</span>
                 </a>
-                <a href="https://torontoeatsandreviews.com/" class="spoke-card" target="_blank" rel="noopener">
+                <a href="https://torontoeatsandreviews.com/" class="spoke-card reveal" target="_blank" rel="noopener">
                     <div class="card-icon">Reviews</div>
                     <div class="card-title">Toronto Eats & Reviews</div>
                     <div class="card-desc">Post-shift dining spots and hidden gems reviewed through the lens of a healthcare professional who values recovery.</div>
@@ -1060,70 +1319,28 @@
             </div>
         </section>
 
-        <p>I also write regularly on <a href="https://medium.com/@msjag416" target="_blank" rel="noopener">Medium</a> about the intersection of healthcare, professional well-being, and the realities of working in high-stress environments. If you're looking for longer reads on burnout prevention, workplace psychology, and health topics backed by clinical experience, that's where to find them.</p>
+        <p class="reveal">I also write regularly on <a href="https://medium.com/@msjag416" target="_blank" rel="noopener">Medium</a> about the intersection of healthcare, professional well-being, and the realities of working in high-stress environments. If you're looking for longer reads on burnout prevention, workplace psychology, and health topics backed by clinical experience, that's where to find them.</p>
 
         <!-- Latest from Medium -->
-        <section style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
+        <section class="reveal" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
             <div class="spoke-label">From my Medium Blog</div>
             <div id="articles-container" class="spoke-grid">
                 <p>Loading the latest articles...</p>
             </div>
         </section>
 
-        <div class="networking-cta">
-            <!-- Working Out -->
-            <svg class="stick-figure" style="top: 8%; left: 4%; transform: rotate(-10deg);" viewBox="0 0 24 24">
-                <circle cx="12" cy="6" r="2.5"/>
-                <line x1="12" y1="8.5" x2="12" y2="16"/>
-                <line x1="12" y1="16" x2="8" y2="22"/> <line x1="12" y1="16" x2="16" y2="22"/>
-                <polyline points="6,9 12,11 18,9"/>
-                <line x1="4" y1="9" x2="8" y2="9"/> <line x1="16" y1="9" x2="20" y2="9"/>
-            </svg>
-            <!-- House Music / Dancing -->
-            <svg class="stick-figure" style="top: 8%; right: 4%; transform: rotate(15deg);" viewBox="0 0 24 24">
-                <circle cx="12" cy="4" r="2.5"/>
-                <line x1="12" y1="6.5" x2="12" y2="14"/>
-                <polyline points="8,21 12,14 14,20 18,18"/>
-                <polyline points="7,3 12,9 17,4"/>
-            </svg>
-            <!-- Dining / Patios -->
-            <svg class="stick-figure" style="top: 40%; left: 2%;" viewBox="0 0 24 24">
-                <circle cx="8" cy="6" r="2.5"/>
-                <line x1="8" y1="8.5" x2="8" y2="16"/>
-                <polyline points="8,16 14,16 14,22"/>
-                <polyline points="8,11 12,12 16,11"/>
-                <line x1="14" y1="13" x2="22" y2="13"/> <line x1="18" y1="13" x2="18" y2="22"/>
-                <rect x="15" y="10" width="2" height="3"/>
-            </svg>
-            <!-- Playing Pool -->
-            <svg class="stick-figure" style="top: 40%; right: 2%;" viewBox="0 0 24 24">
-                <circle cx="7" cy="7" r="2.5"/>
-                <line x1="7" y1="9.5" x2="13" y2="14"/>
-                <polyline points="13,22 13,14 17,22"/>
-                <polyline points="9,11 15,13 18,10"/>
-                <line x1="2" y1="12" x2="22" y2="8"/>
-            </svg>
-            <!-- Table Tennis -->
-            <svg class="stick-figure" style="bottom: 8%; left: 4%; transform: rotate(5deg);" viewBox="0 0 24 24">
-                <circle cx="12" cy="5" r="2.5"/>
-                <line x1="12" y1="7.5" x2="12" y2="15"/>
-                <polyline points="7,21 12,15 17,21"/>
-                <polyline points="12,10 18,10 18,7"/>
-                <circle cx="18" cy="6" r="1.5"/>
-                <line x1="12" y1="10" x2="6" y2="12"/>
-            </svg>
-            <!-- Rollerskating -->
-            <svg class="stick-figure" style="bottom: 8%; right: 4%; transform: rotate(-5deg);" viewBox="0 0 24 24">
-                <circle cx="14" cy="5" r="2.5"/>
-                <line x1="14" y1="7.5" x2="10" y2="15"/>
-                <polyline points="5,20 10,15 15,20"/>
-                <circle cx="4" cy="22" r="1"/> <circle cx="6" cy="22" r="1"/>
-                <circle cx="14" cy="22" r="1"/> <circle cx="16" cy="22" r="1"/>
-                <polyline points="6,12 12,10 18,12"/>
-            </svg>
-
+        <div class="networking-cta reveal">
             <span class="label">Let's Connect</span>
-            <p>I'm always interested in meeting up with other like-minded professionals across the city. Connecting with peers is a necessary part of maintaining a healthy routine outside of clinical environments. When I'm not working or writing, I enjoy working out, playing pool, and practicing table tennis. I also spend time discussing politics, relaxing on local patios, rollerskating, dining out, and dancing to house music. Please use the contact form below if you want to connect over shared interests or discuss healthcare protocols.</p>
+            <h3>Looking for Like-Minded Professionals</h3>
+            <p>Connecting with peers is a necessary part of maintaining a healthy routine outside of clinical environments. When I'm not working or writing, you'll find me at the gym, on rollerskates, at a patio, or dancing to house music somewhere in the city.</p>
+            <div class="interest-pills">
+                <span>Working Out</span>
+                <span>Rollerskating</span>
+                <span>Pool &amp; Table Tennis</span>
+                <span>Patios &amp; Dining</span>
+                <span>House Music</span>
+                <span>Politics</span>
+            </div>
             <a href="#contact" class="btn-cta">
                 Drop Me a Message <i data-lucide="arrow-down" style="width: 16px; height: 16px;"></i>
             </a>
@@ -1133,13 +1350,13 @@
 
     <!-- ===== CONTACT SECTION ===== -->
     <section class="contact-section" id="contact">
-        <div class="contact-header">
+        <div class="contact-header reveal">
             <span class="label">Get in Touch</span>
             <h2>Contact ProRN Inc.</h2>
             <p>Have questions about the proposals, the data, or how these frameworks could work for your organization? Reach out directly.</p>
         </div>
         
-        <div class="contact-form-container">
+        <div class="contact-form-container reveal">
             <form id="prorn-contact-form">
                 <input type="hidden" name="access_key" value="d53865a9-a2b3-4a65-944e-42902839d672" />
                 <input type="hidden" name="subject" value="New Toronto ProRN Inquiry" />
@@ -1198,19 +1415,57 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i data-lucide="chevron-up" style="width: 20px; height: 20px;"></i>
+    </button>
+
     <script>
-    function stripHtml(html) {
-        let tmp = document.createElement("DIV");
-        tmp.innerHTML = html;
-        return tmp.textContent || tmp.innerText || "";
+    // Safe Lucide wrapper (handles CDN load failure in restricted environments)
+    function initIcons() {
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
     }
-    function findImageInContent(content) {
-        const div = document.createElement('div');
-        div.innerHTML = content;
-        const img = div.querySelector('img');
-        return img ? img.src : null;
-    }
+
+    // ===== Scroll Reveal with IntersectionObserver =====
     document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // ===== Back to Top Button =====
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== Medium RSS Feed =====
+        function stripHtml(html) {
+            let tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+        }
+        function findImageInContent(content) {
+            const div = document.createElement('div');
+            div.innerHTML = content;
+            const img = div.querySelector('img');
+            return img ? img.src : null;
+        }
+
         fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@msjag416')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
@@ -1245,14 +1500,14 @@
                         `;
                         container.insertAdjacentHTML('beforeend', articleHTML);
                     });
-                    lucide.createIcons(); 
+                    initIcons(); 
                 }
             })
             .catch(() => {
                 document.getElementById('articles-container').innerHTML = '<p>Visit my Medium profile for the latest articles.</p>';
             });
 
-        // Form Character Counter
+        // ===== Form Character Counter =====
         const messageTextarea = document.getElementById('contact-message');
         const charCountDisplay = document.getElementById('char-count');
         if (messageTextarea && charCountDisplay) {
@@ -1262,7 +1517,7 @@
             });
         }
 
-        // Web3Forms AJAX Submission
+        // ===== Web3Forms AJAX Submission =====
         const contactForm = document.getElementById('prorn-contact-form');
         const formResult = document.getElementById('form-result');
         const submitButton = contactForm ? contactForm.querySelector('.form-submit') : null;
@@ -1307,13 +1562,16 @@
                 })
                 .then(function() {
                     submitButton.innerHTML = 'Send Message <i data-lucide="send" style="width: 16px; height: 16px;"></i>';
-                    lucide.createIcons();
+                    initIcons();
                     setTimeout(() => {
                         formResult.style.display = 'none';
                     }, 5000);
                 });
             });
         }
+
+        // Init Lucide icons
+        initIcons();
     });
     </script>
 </body>
