@@ -272,7 +272,46 @@
             animation: jiggle 0.3s ease infinite;
         }
 
-        @media (max-width: 850px) { .nav-links { display: none; } .hero-footer { grid-template-columns: 1fr; } }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--ink);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (max-width: 850px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(8px);
+                border-bottom: 2px solid var(--ink);
+                padding: 1rem 0;
+                gap: 0;
+                display: none;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { padding: 0.9rem 1.5rem; border-bottom: 1px solid var(--line-faint); }
+            .nav-links li:last-child { border-bottom: none; }
+            .hero-footer { grid-template-columns: 1fr; }
+        }
 
         .cred-section { border-bottom: 1px solid var(--line-faint); padding: 6rem 0; }
         .cred-grid { display: grid; grid-template-columns: 180px 1fr; gap: 4rem; align-items: start; }
@@ -433,7 +472,10 @@
     <nav class="site-nav">
         <div class="container nav-inner">
             <a href="https://prorninc.com" class="nav-brand">ProRN Inc.</a>
-            <ul class="nav-links">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#burnout">Burnout</a></li>
                 <li><a href="#dining">Post-Shift</a></li>
                 <li><a href="#framework">Framework</a></li>
@@ -684,6 +726,22 @@
     document.addEventListener('DOMContentLoaded', () => {
         // Dynamic copyright year
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Mobile hamburger menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
 
         const obs = new IntersectionObserver((es) => {
             es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
